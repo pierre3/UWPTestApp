@@ -1,0 +1,27 @@
+﻿<ContentDialog
+    x:Class="TestApp1.Views.ContentDialog1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestApp1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="TITLE"
+    PrimaryButtonText="Button1"
+    SecondaryButtonText="Button2"
+    PrimaryButtonClick="{x:Bind ViewModel.Execute}">
+    <!-- {x:Bind} を使うと Xaml 内部エラー WMC9999
+        PrimaryButtonClick="{x:Bind ViewModel.Execute}"
+        PrimaryButtonClick="{x:Bind ContentDialog_PrimaryButtonClick}"
+    -->
+    <!-- コマンドのバインディングはOK
+        PrimaryButtonCommand="{x:Bind ViewModel.TestCommand}"    
+    -->
+    <!-- これもOK コードビハインドのメソッドを普通に指定
+        PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    -->
+    <Grid>
+        <!-- こちらのボタンでは{x:Bind} でも問題なし-->
+        <Button Click="{x:Bind ViewModel.Execute}">Content Button</Button>
+    </Grid>
+</ContentDialog>
